@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca sin Censura</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="logo.jpeg" type="image/x-icon">
+    
+</head>
+<body>
+    <!-- Encabezado fijo con título y menú de navegación -->
+    <header>
+        <h1><a href="index.html">Biblioteca sin Censura</a></h1>
+        <button id="hamburger" aria-label="Menú">☰</button>
+        <nav id="nav-menu">
+            <!-- El menú se construirá dinámicamente con JavaScript -->
+        </nav>
+    </header>
+
+    <!-- Contenedor principal para el contenido -->
+    <main>
+        <!-- Barra de herramientas: búsqueda y orden -->
+        <section id="toolbar">
+            <input type="text" id="search-input" placeholder="Buscar por título o descripción...">
+            <select id="sort-select">
+                <option value="asc">Ordenar por título (A-Z)</option>
+                <option value="desc">Ordenar por título (Z-A)</option>
+            </select>
+            <span id="item-count">Elementos: 0</span>
+        </section>
+
+        <!-- Área para mostrar las tarjetas de elementos -->
+        <section id="content">
+            <!-- Las tarjetas se renderizarán aquí con JavaScript -->
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Biblioteca sin Censura. Todos los derechos reservados.</p>
+            <a href="https://www.facebook.com/profile.php?id=61562438782947" target="_blank" class="facebook-link">Síguenos en Facebook</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
