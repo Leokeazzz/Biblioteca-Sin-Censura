@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Sin Censura</title>
+    <meta name="description" content="Biblioteca Sin Censura es una biblioteca digital que enlaza documentos y archivos de todo tipo mediante enlaces externos. Accede a cursos, blogs y software sin restricciones.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Biblioteca Sin Censura — Biblioteca digital por enlaces externos">
+    <meta property="og:description" content="Biblioteca Sin Censura es una biblioteca digital que enlaza documentos y archivos de todo tipo mediante enlaces externos. Accede a cursos, blogs y software sin restricciones.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://bibliotecasincensura.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.jpeg">
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="#sobre-nosotros">
+                    <a class="full-logo" href="/" onclick="location.reload(); return false;">Biblioteca sin Censura</a>
+                    <a class="short-logo" href="/" onclick="location.reload(); return false;">BSC</a>
+
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <a href="#cursos" data-section="cursos">Cursos</a>
+                <a href="#blog" data-section="blog">Blog</a>
+                <a href="#software" data-section="software">Software</a>
+            </nav>
+            <div class="mobile-nav">
+                <button id="search-toggle" aria-label="Buscar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 21L16.5 16.5M19 11C19 15.4183 15.4183 19 11 19S3 15.4183 3 11 6.58172 3 11 3 19 6.58172 19 11Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button id="menu-toggle" aria-label="Menú">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12H21M3 6H21M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu">
+            <nav>
+                <a href="#sobre-nosotros">Inicio</a>
+                <a href="#cursos">Cursos</a>
+                <a href="#blog">Blog</a>
+                <a href="#software">Software</a>
+                <a href="#sobre-nosotros">Sobre nosotros</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+  s  <main>
+        <section id="sobre-nosotros" class="section">
+            <div class="container">
+                <h2>Sobre nosotros</h2>
+                <p class="intro">Biblioteca Sin Censura es un espacio digital que reúne enlaces seguros hacia juegos, cursos, libros, PDF’s y software, funcionando como un índice confiable donde cada acceso abre la posibilidad de encontrar contenidos diversos, inesperados y difíciles de hallar, todo concentrado en un solo lugar.</p>
+            </div>
+        </section>
+
+        <section id="cursos" class="section active">
+            <div class="container">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Buscar cursos por título o palabra clave…" aria-label="Buscar cursos">
+                    <button id="clear-search" aria-label="Limpiar búsqueda" style="font-size: 14px;">×</button>
+                </div>
+                <div id="no-results" class="no-results" style="display: none;">No se encontraron recursos con ese término de búsqueda.</div>
+                <div class="carousel" role="region" aria-label="Carrusel de cursos">
+                    <button class="carousel-btn prev" aria-label="Retroceder">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="carousel-track"></div>
+                    </div>
+                    <button class="carousel-btn next" aria-label="Avanzar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2025 Biblioteca sin Censura. Todos los derechos reservados.</p>
+            <a href="https://www.facebook.com/profile.php?id=61562438782947" class="facebook-btn" aria-label="Visitar Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.099 4.388 23.094 10.125 24V15.563H7.078V12.073H10.125V9.413C10.125 6.387 11.919 4.716 14.71 4.716C15.904 4.716 17.153 4.928 17.291 4.946V7.874H15.46C13.832 7.874 13.5 8.643 13.5 9.775V12.073H17.203L16.711 15.563H13.5V24C19.237 23.094 24 18.099 24 12.073Z" fill="#166FE5"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
