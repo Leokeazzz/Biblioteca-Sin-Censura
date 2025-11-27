@@ -117,10 +117,26 @@ button {
     padding: 8px;
     border-radius: 4px;
     transition: var(--transicion);
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .mobile-nav button:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-text {
+    display: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Show text on Android/small screens */
+@media (max-width: 600px) and (-webkit-min-device-pixel-ratio: 1.5) {
+    .search-text {
+        display: inline;
+    }
 }
 
 .mobile-menu {
@@ -222,154 +238,101 @@ main {
     background-color: #f0f0f0;
 }
 
-/* Carrusel */
+/* =========================
+   VARIABLES Y RESET
+   ========================= */
+:root {
+    --color-azul: rgb(22, 82, 163);
+    --color-fondo: rgb(245, 247, 250);
+    --color-blanco: #ffffff;
+    --color-gris-claro: #f5f7fa;
+    --color-texto: #333;
+    --color-enlace: var(--color-azul);
+    --radio-borde: 8px;
+    --sombra: 0 2px 4px rgba(0,0,0,0.1);
+    --sombra-hover: 0 4px 8px rgba(0,0,0,0.15);
+    --transicion: all .3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+/* =========================
+   CARRUSEL — CÓDIGO LIMPIO
+   ========================= */
 .carousel {
-    position: relative;
     width: 100%;
-    overflow: hidden;
+    position: relative;
 }
 
 .carousel-container {
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-    position: relative;
     scroll-behavior: smooth;
-    /* cursor: default; Removed grab cursor so no mouse drag implied */
-    user-select: text; /* Allow text selection normally */
-    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Hide scrollbars but keep scrolling */
-.carousel-container::-webkit-scrollbar {
-    display: none;
-}
-.carousel-container {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-.carousel-track {
-    display: flex;
-    flex-direction: row !important;
-    overflow-x: visible !important;
-    white-space: nowrap;
-    width: auto !important;
-}
-
-@media (max-width: 600px) {
-    .carousel-container {
-        height: auto; /* remove fixed height for flexibility */
-        overflow-x: auto;
-        overflow-y: hidden;
-    }
-
-    .carousel-track {
-        flex-direction: row !important;
-        width: auto !important;
-    }
-
-    .curso-card {
-        flex: 0 0 280px;
-        margin: 0 16px;
-        height: auto;
-        min-height: 350px;
-    }
-}
-
-/* Hide scrollbars */
 .carousel-container::-webkit-scrollbar {
     display: none;
 }
 
-.carousel-container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.carousel-container:active {
-    cursor: grabbing;
-}
-
 .carousel-track {
     display: flex;
-    flex-direction: row;
-    overflow-x: hidden;
-    white-space: nowrap;
-    width: fit-content;
+    gap: 20px;
+    padding: 10px 0;
 }
 
+/* Botones */
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: gainsboro;
-    color: var(--color-azul);
-    border: none;
     width: 48px;
     height: 48px;
     border-radius: 50%;
+    border: none;
+    background: gainsboro;
+    color: var(--color-azul);
+    opacity: 0.6;
     font-size: 1.5rem;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.6;
     transition: var(--transicion);
+    cursor: pointer;
     z-index: 10;
 }
 
 .carousel-btn:hover {
-    opacity: 1.0;
+    opacity: 1;
     transform: translateY(-50%) scale(1.05);
 }
 
-.carousel-btn:focus {
-    outline: 2px solid var(--color-foco);
-    outline-offset: 2px;
-}
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
 
-.carousel-btn.prev {
-    left: 10px;
-}
-
-.carousel-btn.next {
-    right: 10px;
-}
-
-/* Tarjetas de cursos */
+/* =========================
+   TARJETAS DE CURSOS
+   ========================= */
 .curso-card {
-    flex: 0 0 280px;
-    margin: 0 16px;
-    background-color: var(--color-blanco);
+    flex: 0 0 300px;
+    background: var(--color-blanco);
     border-radius: var(--radio-borde);
+    box-shadow: var(--sombra);
     overflow: hidden;
-    box-shadow: var(--sombra-ligera);
-    transition: var(--transicion);
-    position: relative;
-    min-height: 350px;
     display: flex;
     flex-direction: column;
-}
-
-.reportar-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: var(--color-texto);
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 4px 8px;
-    font-size: 0.8rem;
-    cursor: pointer;
     transition: var(--transicion);
-    z-index: 5;
-}
-
-.reportar-btn:hover {
-    background-color: var(--color-blanco);
-    box-shadow: var(--sombra-ligera);
 }
 
 .curso-card:hover {
@@ -384,53 +347,88 @@ main {
 }
 
 .curso-card h3 {
-    margin: 16px 20px 3px 20px; /* Igual que el padding lateral de la tarjeta */
-    font-size: 1.2rem;
+    margin: 16px 20px 6px 20px;
+    font-size: 1.15rem;
     color: var(--color-azul);
     line-height: 1.3;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .curso-card p {
-    margin: 0 24px;
-    flex: 1;
+    margin: 0 20px;
     font-size: 0.9rem;
     color: #666;
+    text-align: justify;
+    flex: 1;
 }
 
-.curso-meta {
-    margin: 16px;
-    display: flex;
-    justify-content: flex-start;
-    font-size: 0.8rem;
-    color: #888;
+/* Enlace */
+.enlace-curso {
+    margin-top: auto;
+    padding: 12px 0;
+    text-align: center;
+    background: var(--color-azul);
+    color: var(--color-blanco);
+    font-weight: 500;
+    transition: var(--transicion);
+}
+.enlace-curso:hover {
+    background: #1a5a99;
 }
 
-.curso-meta .categoria {
-    margin-right: 16px;
-}
-
-.menu-tres-puntos {
+/* Reportar */
+.reportar-btn {
     position: absolute;
     top: 10px;
     right: 10px;
-}
-
-.tres-puntos-btn {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: rgba(255,255,255,0.9);
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    z-index: 5;
     transition: var(--transicion);
 }
 
-.tres-puntos-btn:hover {
-    background-color: var(--color-blanco);
+.reportar-btn:hover {
+    background: white;
+    box-shadow: var(--sombra);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 768px) {
+    .curso-card {
+        flex: 0 0 240px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    /* CARRUSEL MÓVIL */
+    .carousel-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: auto;
+    }
+
+    .carousel-track {
+        flex-direction: row;
+    }
+
+    .curso-card {
+        flex: 0 0 260px;
+        min-height: 350px;
+    }
+
+    .carousel-btn {
+        display: none; /* botones se ocultan en móvil */
+    }
 }
 
 .menu-opciones {
@@ -611,36 +609,27 @@ main {
     }
 
     .carousel-container {
-        height: 350px;
+        height: auto;
+        overflow-x: auto;
         overflow-y: hidden;
-        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
     }
 
     .carousel-track {
-        flex-direction: column;
-        width: 100%;
+        flex-direction: row;
+        width: max-content;
     }
 
     .carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10;
-        margin: 0;
-    }
-
-    .carousel-btn.prev {
-        left: 0;
-    }
-
-    .carousel-btn.next {
-        right: 0;
+        display: flex;
+        width: 40px;
+        height: 40px;
     }
 
     .curso-card {
-        flex: 0 0 280px;
-        margin: 0 16px;
-        height: 350px;
+        flex: 0 0 260px;
+        margin: 0 10px;
+        min-height: 350px;
     }
 
     #footer .container {
@@ -675,7 +664,7 @@ a:focus {
 
 .curso-card {
     animation: fadeIn 0.5s ease-out;
-    min-height: 360px;
+    min-height: 400px;
 }
 
 /* Marca de agua sutil */
